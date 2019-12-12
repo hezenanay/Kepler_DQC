@@ -1,0 +1,8 @@
+cffi==1.13.2
+cryptography==2.8
+Django==2.2.7
+pycparser==2.19
+PyMySQL==0.9.3
+pytz==2019.3
+six==1.13.0
+sqlparse==0.3.0
