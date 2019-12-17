@@ -11,7 +11,7 @@ class User(models.Model):
 
     username=models.CharField(max_length=128, unique=True)
     password=models.CharField(max_length=255)
-    email=models.CharField(max_length=128, unique=True)
+    email=models.EmailField(max_length=128, unique=True)
     gender=models.CharField(max_length=32, choices=gender_kv, default='男')
     phone=models.CharField(max_length=32, unique=True)
     c_time=models.DateTimeField(auto_now_add=True)
