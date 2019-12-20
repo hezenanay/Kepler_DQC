@@ -25,5 +25,5 @@ class Threshold_task(models.Model):
 
     class Meta:
         ordering=['-c_time']
-        verbose_name='异常监控'
-        verbose_name_plural='异常监控'
+        verbose_name='阈值监控'
+        verbose_name_plural='阈值监控'
