@@ -1,5 +1,10 @@
 from django import forms
+from .models import User
 
-class UserFrom(forms.Form):
-    username=forms.CharField(label='用户名', max_length=128, widget=forms.TextInput())
-    password=forms.CharField(label='密码', max_length=256, widget=forms.PasswordInput())
+class UserFrom(forms.ModelForm):
+
+    class Meta:
+        model=User
+        fields=(
+            'username','password'
+        )
