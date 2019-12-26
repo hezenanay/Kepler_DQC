@@ -21,8 +21,15 @@ class Error_task(models.Model):
         ('last_month_only','上月(mm)'),
     )
 
+    server_add_kv=(
+        ('10.130.146.11','报表平台 (10.130.146.11)'),
+        ('10.130.146.13','决策系统 (10.130.146.13)'),
+        ('10.126.75.56','虚拟机 (10.126.75.56)'),
+    )
+
     c_type=models.CharField(verbose_name='监控类型', max_length=32, choices=error_ctrl_kv)
     s_id=models.CharField(verbose_name='调度id', max_length=32, null=True, blank=True)
+    server_add=models.CharField(verbose_name='数据服务器', max_length=128, choices=server_add_kv)
     t_name=models.CharField(verbose_name='监控表名称', max_length=128, null=True, blank=True)
     c_name=models.CharField(verbose_name='监控字段名称', max_length=128, null=True, blank=True)
     condition=models.CharField(verbose_name='监控条件', max_length=256, null=True, blank=True)
