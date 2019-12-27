@@ -26,11 +26,11 @@ class Threshold_task(models.Model):
     )
 
     c_type=models.CharField(verbose_name='监控类型', max_length=32, choices=threshold_ctrl_kv)
-    server_add = models.CharField(verbose_name='数据服务器', max_length=128, choices=server_add_kv)
+    server_add = models.CharField(verbose_name='数据服务器', max_length=128, null=True, blank=True, choices=server_add_kv)
     t_name=models.CharField(verbose_name='监控表名称', max_length=128)
     c_name=models.CharField(verbose_name='监控字段名称', max_length=128)
     condition = models.CharField(verbose_name='监控条件', max_length=256, null=True, blank=True)
-    time_option = models.CharField(verbose_name='时间选择', max_length=128, null=True, blank=True, default=None, choices=time_option_kv)
+    time_option = models.CharField(verbose_name='条件时间选择', max_length=128, null=True, blank=True, choices=time_option_kv)
     up_value=models.DecimalField(verbose_name='监控上限值、百分比', max_digits=16, decimal_places=2)
     down_value=models.DecimalField(verbose_name='监控下限值、百分比', max_digits=16, decimal_places=2)
     r_time=models.TimeField(verbose_name='执行时间')

@@ -29,11 +29,11 @@ class Error_task(models.Model):
 
     c_type=models.CharField(verbose_name='监控类型', max_length=32, choices=error_ctrl_kv)
     s_id=models.CharField(verbose_name='调度id', max_length=32, null=True, blank=True)
-    server_add=models.CharField(verbose_name='数据服务器', max_length=128, choices=server_add_kv)
+    server_add=models.CharField(verbose_name='数据服务器', max_length=128, null=True, blank=True, choices=server_add_kv)
     t_name=models.CharField(verbose_name='监控表名称', max_length=128, null=True, blank=True)
     c_name=models.CharField(verbose_name='监控字段名称', max_length=128, null=True, blank=True)
     condition=models.CharField(verbose_name='监控条件', max_length=256, null=True, blank=True)
-    time_option=models.CharField(verbose_name='时间选择', max_length=128, null=True, blank=True, default=None, choices=time_option_kv)
+    time_option=models.CharField(verbose_name='条件时间选择', max_length=128, null=True, blank=True, choices=time_option_kv)
     r_time=models.TimeField(verbose_name='执行时间')
     o_user_email=models.EmailField(verbose_name='创建人邮箱', max_length=128)
     p_user_email=models.EmailField(verbose_name='推送人邮箱', max_length=128)
