@@ -10,6 +10,6 @@ class ErrorctrlForm(forms.ModelForm):
     class Meta:
         model = Error_task
         fields=(
-            's_id','t_name','c_name','condition','time_option',
+            's_id','server_add','t_name','c_name','condition','time_option',
             'r_time','o_user_email','p_user_email'
         )
