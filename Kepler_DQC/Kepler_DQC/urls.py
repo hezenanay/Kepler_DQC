@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url
+from login import views as loginView
+from error_ctrl import views as errorView
+from threshold_ctrl import views as thresholdView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^login/', loginView.login),
+    url(r'^new_error_ctrl/', errorView.new_error_ctrl),
+    url(r'^new_threshold_ctrl/', thresholdView.new_threshold_ctrl),
+
 ]
