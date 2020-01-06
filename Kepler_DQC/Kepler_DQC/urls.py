@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from login import views as loginView
+from dashboard import views as dashboardView
 from error_ctrl import views as errorView
 from threshold_ctrl import views as thresholdView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', loginView.login),
+    url(r'^index/', dashboardView.index),
+    url(r'^threshold_ctrl/', thresholdView.threshold_ctrl),
     url(r'^new_error_ctrl/', errorView.new_error_ctrl),
     url(r'^new_threshold_ctrl/', thresholdView.new_threshold_ctrl),
 

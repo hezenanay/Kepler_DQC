@@ -6,6 +6,21 @@ from .models import *
 
 # Create your views here.
 
+# 阈值监控页面
+def threshold_ctrl(request):
+    if not request.session.get('is_login', None):
+        # 发现没有登录则强制跳转到登录页面
+        return redirect('/login/')
+    if request.method == 'POST':
+        # 如果请求来自新建监控按钮
+        if 'new_ctrl' in request.POST:
+            return redirect('/new_threshold_ctrl/')
+
+    return render(request, 'threshold_ctrl/threshold_ctrl.html', locals())
+
+
+
+# 新建阈值监控页面
 def new_threshold_ctrl(request):
     if not request.session.get('is_login', None):
         # 发现没有登录则强制跳转到登录页面

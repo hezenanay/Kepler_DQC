@@ -7,6 +7,27 @@ from .models import *
 
 # Create your views here.
 
+# 异常监控页面
+def error_ctrl(request):
+    if not request.session.get('is_login', None):
+        # 发现没有登录则强制跳转到登录页面
+        return redirect('/login/')
+    # 获取登录用户邮箱，获取用户任务列表
+    user_email=request.session.get('user_email', None)
+    task_list = Error_task.objects.get(o_user_email=user_email)
+
+    if request.method == 'POST':
+        # 如果请求来自新建监控按钮
+        if 'new_ctrl' in request.POST:
+            return redirect('/new_error_ctrl/')
+
+    # 生成当前用户下的任务内容
+    context={
+        'task_list':task_list
+    }
+    return render(request, 'error_ctrl/error_ctrl.html', context=context)
+
+# 新建异常监控
 def new_error_ctrl(request):
     if not request.session.get('is_login', None):
         # 发现没有登录则强制跳转到登录页面
