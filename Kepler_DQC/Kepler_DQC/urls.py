@@ -25,7 +25,10 @@ urlpatterns = [
     url(r'^login/', loginView.login),
     url(r'^index/', dashboardView.index),
     url(r'^threshold_ctrl/', thresholdView.threshold_ctrl),
+    url(r'^error_ctrl/', errorView.error_ctrl),
     url(r'^new_error_ctrl/', errorView.new_error_ctrl),
     url(r'^new_threshold_ctrl/', thresholdView.new_threshold_ctrl),
+    url(r'^threshold_ctrl_dtl/(?P<post_id>\d+)/$', thresholdView.threshold_ctrl_dtl),
+    url(r'^error_ctrl_dtl/(?P<post_id>\d+)/$', errorView.error_ctrl_dtl),
 
 ]

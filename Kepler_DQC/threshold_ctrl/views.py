@@ -11,10 +11,20 @@ def threshold_ctrl(request):
     if not request.session.get('is_login', None):
         # 发现没有登录则强制跳转到登录页面
         return redirect('/login/')
+    # 获取登录用户邮箱，获取用户任务列表
+    user_email=request.session.get('user_email',None)
+    task_list=Threshold_task.objects.get(o_user_email=user_email)
+
+    # 新建监控按钮
     if request.method == 'POST':
         # 如果请求来自新建监控按钮
         if 'new_ctrl' in request.POST:
             return redirect('/new_threshold_ctrl/')
+
+    # 生成当前用户下的任务内容
+    context = {
+        'task_list': task_list
+    }
 
     return render(request, 'threshold_ctrl/threshold_ctrl.html', locals())
 
@@ -64,6 +74,38 @@ def new_threshold_ctrl(request):
             new_task.o_user_email = o_user_email
             new_task.p_user_email = p_user_email
             new_task.save()
-            return redirect('/threshold_ctrl_list/')
+            return redirect('/threshold_ctrl/')
     threshold_form = ThresholdtaskForm()
     return render(request, 'threshold_ctrl/new_threshold_ctrl.html', locals())
+
+
+
+# 阈值监控编辑界面
+def threshold_ctrl_dtl(request, post_id):
+    if not request.session.get('is_login', None):
+        # 发现没有登录则强制跳转到登录页面
+        return redirect('/login/')
+    task_detail=Threshold_task.objects.get(id=post_id)
+
+    # 生成当前任务的详细信息
+    context = {
+        'task_detail': task_detail
+    }
+
+
+    # 删除按钮
+    if request.method == 'POST':
+        # 如果请求来自删除按钮
+        if 'delete' in request.POST:
+            Threshold_task.objects.filter(id=post_id).delete()
+            return redirect('/threshold_ctrl/')
+
+    # 修改按钮
+    if request.method == 'POST':
+        # 如果请求来自修改按钮
+        if 'update' in request.POST:
+            # 更新内容占位
+            # Threshold_task.objects.filter(id=post_id).update(#更新内容占位)
+            return redirect('/threshold_ctrl/')
+
+    return render(request, 'threshold_ctrl/threshold_ctrl_dtl.html', locals())

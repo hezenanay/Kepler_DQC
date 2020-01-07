@@ -16,10 +16,12 @@ def error_ctrl(request):
     user_email=request.session.get('user_email', None)
     task_list = Error_task.objects.get(o_user_email=user_email)
 
+    # 新建监控按钮
     if request.method == 'POST':
         # 如果请求来自新建监控按钮
         if 'new_ctrl' in request.POST:
             return redirect('/new_error_ctrl/')
+
 
     # 生成当前用户下的任务内容
     context={
@@ -71,6 +73,38 @@ def new_error_ctrl(request):
             new_task.o_user_email = o_user_email
             new_task.p_user_email = p_user_email
             new_task.save()
-            return redirect('/error_ctrl_list/')  # 自动跳转到异常监控列表页面
+            return redirect('/error_ctrl/')  # 自动跳转到异常监控列表页面
     error_form = ErrorctrlForm()
     return render(request, 'error_ctrl/new_error_ctrl.html', locals())
+
+
+
+# 异常监控编辑界面
+def error_ctrl_dtl(request, post_id):
+    if not request.session.get('is_login', None):
+        # 发现没有登录则强制跳转到登录页面
+        return redirect('/login/')
+    task_detail=Error_task.objects.get(id=post_id)
+
+    # 生成当前任务的详细信息
+    context = {
+        'task_detail': task_detail
+    }
+
+
+    # 删除按钮
+    if request.method == 'POST':
+        # 如果请求来自删除按钮
+        if 'delete' in request.POST:
+            Error_task.objects.filter(id=post_id).delete()
+            return redirect('/error_ctrl/')
+
+    # 修改按钮
+    if request.method == 'POST':
+        # 如果请求来自修改按钮
+        if 'update' in request.POST:
+            # 更新内容占位
+            # Error_task.objects.filter(id=post_id).update(#更新内容占位)
+            return redirect('/error_ctrl/')
+
+    return render(request, 'error_ctrl/error_ctrl_dtl.html', locals())
