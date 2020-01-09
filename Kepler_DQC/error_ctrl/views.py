@@ -99,6 +99,7 @@ def error_ctrl_dtl(request, post_id):
             Error_task.objects.filter(id=post_id).delete()
             return redirect('/error_ctrl/')
 
+
     # 修改按钮
     if request.method == 'POST':
         # 如果请求来自修改按钮
