@@ -28,6 +28,7 @@ def error_ctrl(request):
         'task_list':task_list
     }
     return render(request, 'error_ctrl/error_ctrl.html', context=context)
+    # return render(request, 'error_ctrl/error_ctrl.html')
 
 # 新建异常监控
 def new_error_ctrl(request):
@@ -108,4 +109,4 @@ def error_ctrl_dtl(request, post_id):
             # Error_task.objects.filter(id=post_id).update(#更新内容占位)
             return redirect('/error_ctrl/')
 
-    return render(request, 'error_ctrl/error_ctrl_dtl.html', locals())
+    return render(request, 'error_ctrl/error_ctrl.html', locals())
