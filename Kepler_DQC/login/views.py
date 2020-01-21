@@ -7,12 +7,15 @@ from .models import *
 # Create your views here.
 
 def login(request):
-    if request.session.get('is_login', None):
-        #发现已登录则强制跳转到主页面
-        return redirect('/index/')
+    # if request.session.get('is_login', None):
+    #     #发现已登录则强制跳转到主页面
+    #     return redirect('/index/')
     if request.method == 'POST':
         login_form = UserFrom(request.POST)
+        print(login_form)
+        print(login_form.is_valid())
         if login_form.is_valid():
+            print('提交数据有效')
             username = login_form.cleaned_data['username']
             password = login_form.cleaned_data['password']
             try:
@@ -27,5 +30,6 @@ def login(request):
             except:
                 message = '用户不存在！'
         return render(request, 'login/login.html', locals())
+    print('提交数据无效')
     login_form = UserFrom()
     return render(request, 'login/login.html', locals())
