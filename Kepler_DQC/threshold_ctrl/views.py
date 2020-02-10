@@ -13,7 +13,7 @@ def threshold_ctrl(request):
         return redirect('/login/')
     # 获取登录用户邮箱，获取用户任务列表
     user_email=request.session.get('user_email',None)
-    task_list=Threshold_task.objects.get(o_user_email=user_email)
+    task_list=Threshold_task.objects.filter(o_user_email=user_email)
 
     # 新建监控按钮
     if request.method == 'POST':

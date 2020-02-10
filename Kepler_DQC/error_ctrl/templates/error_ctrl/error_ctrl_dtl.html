@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block card-title %}新建异常监控{% endblock %}
-{% block card-subtitle %}create new error control{% endblock %}
+{% block card-title %}修改异常监控{% endblock %}
+{% block card-subtitle %}update error control{% endblock %}
 
 {% block content %}
     <div class="table-responsive" style="padding-left: 20px">
-        <form class="form-login" action="/new_error_ctrl/" method="post">
+		{% for task in task_detail %}
+
+        <form class="form-dtl" action="/error_ctrl_dtl/{{task.id}}/" method="post">
 						{% if message %}
 						    <div class="alert alert-warning">{{ message }}</div>
 						{% endif %}
 						{% csrf_token %}
 						<div class="lowin-group">
-							{{ error_form.c_type.label_tag }}
-							{{ error_form.c_type }}
+							{{ task.c_type.label_tag }}
+							{{ task.c_type }}
 						</div>
 						<div class="lowin-group password-group">
 							{{ error_form.s_id.label_tag }}
@@ -46,9 +48,10 @@
 							{{ error_form.p_user_email.label_tag }}
 							{{ error_form.p_user_email }}
 						</div>
-						<button type="submit">
-							提交
-						</button>
+						<button name="update" type="submit">提交</button>
+			            <button name="delete" type="submit">删除</button>
 		</form>
+		{% endfor %}
+
     </div>
 {% endblock %}
