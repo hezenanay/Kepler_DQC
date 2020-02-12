@@ -21,7 +21,6 @@
                                             <th class="border-top-0">监控表名称</th>
                                             <th class="border-top-0">监控字段名称</th>
                                             <th class="border-top-0">执行时间</th>
-                                            <th class="border-top-0">创建人</th>
                                             <th class="border-top-0">推送人</th>
                                             <th class="border-top-0">操作</th>
                                         </tr>
@@ -39,11 +38,10 @@
                                             </td>
                                             <td>{{task.c_type}}</td>
                                             <td>{{task.s_id}}</td>
-                                            <td>{{task.server.add}}</td>
+                                            <td>{{task.server_add}}</td>
                                             <td>{{task.t_name}}</td>
                                             <td>{{task.c_name}}</td>
                                             <td>{{task.r_time}}</td>
-                                            <td>{{task.o_user_email}}</td>
                                             <td>{{task.p_user_email}}</td>
                                             <td>
                                                 <a href="/error_ctrl_dtl/{{task.id}}">修改</a>

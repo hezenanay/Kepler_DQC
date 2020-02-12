@@ -85,7 +85,7 @@ def threshold_ctrl_dtl(request, post_id):
     if not request.session.get('is_login', None):
         # 发现没有登录则强制跳转到登录页面
         return redirect('/login/')
-    task_detail=Threshold_task.objects.get(id=post_id)
+    task_detail = Threshold_task.objects.filter(id=post_id, o_user_email=request.session.get('user_email'))
 
     # 生成当前任务的详细信息
     context = {
@@ -95,17 +95,42 @@ def threshold_ctrl_dtl(request, post_id):
 
     # 删除按钮
     if request.method == 'POST':
+        print('发生了请求')
         # 如果请求来自删除按钮
         if 'delete' in request.POST:
-            Threshold_task.objects.filter(id=post_id).delete()
+            print('已点击删除')
+            Error_task.objects.filter(id=post_id).delete()
             return redirect('/threshold_ctrl/')
 
-    # 修改按钮
-    if request.method == 'POST':
+        # 修改按钮
         # 如果请求来自修改按钮
-        if 'update' in request.POST:
-            # 更新内容占位
-            # Threshold_task.objects.filter(id=post_id).update(#更新内容占位)
-            return redirect('/threshold_ctrl/')
+        elif 'update' in request.POST:
+            new_c_type = request.POST.get('new_c_type')
+            new_server_add=request.POST.get('new_server_add')
+            new_t_name=request.POST.get('new_t_name')
+            new_c_name=request.POST.get('new_c_name')
+            new_condition=request.POST.get('new_condition')
+            new_time_option=request.POST.get('new_time_option')
+            new_cpr_time_option=request.POST.get('new_cpr_time_option')
+            new_up_value=request.POST.get('new_up_value')
+            new_down_value=request.POST.get('new_down_value')
+            new_r_time=request.POST.get('new_r_time')
+            new_p_user_email=request.POST.get('new_p_user_email')
 
-    return render(request, 'threshold_ctrl/threshold_ctrl_dtl.html', locals())
+            task = task_detail[0]
+            task.c_type = new_c_type
+            task.server_add=new_server_add
+            task.t_name=new_t_name
+            task.c_name=new_c_name
+            task.condition=new_condition
+            task.time_option=new_time_option
+            task.cpr_time_option=new_cpr_time_option
+            task.up_value=new_up_value
+            task.down_value=new_down_value
+            task.r_time=new_r_time
+            task.p_user_email=new_p_user_email
+            task.save()
+            return redirect('/threshold_ctrl/')
+    print('没有发现post')
+    return render(request, 'threshold_ctrl/threshold_ctrl_dtl.html', context=context)
+    # return render(request, 'threshold_ctrl/threshold_ctrl_dtl.html', locals())

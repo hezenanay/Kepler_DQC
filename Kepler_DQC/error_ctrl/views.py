@@ -109,8 +109,25 @@ def error_ctrl_dtl(request, post_id):
         # 如果请求来自修改按钮
         elif 'update' in request.POST:
             new_c_type=request.POST.get('new_c_type')
+            new_s_id=request.POST.get('new_s_id')
+            new_server_add=request.POST.get('new_server_add')
+            new_t_name=request.POST.get('new_t_name')
+            new_c_name=request.POST.get('new_c_name')
+            new_condition=request.POST.get('new_condition')
+            new_time_option=request.POST.get('new_time_option')
+            new_r_time=request.POST.get('new_r_time')
+            new_p_user_email=request.POST.get('new_p_user_email')
+
             task=task_detail[0]
             task.c_type=new_c_type
+            task.s_id=new_s_id
+            task.server_add=new_server_add
+            task.t_name=new_t_name
+            task.c_name=new_c_name
+            task.condition=new_condition
+            task.time_option=new_time_option
+            task.r_time=new_r_time
+            task.p_user_email=new_p_user_email
             task.save()
             return redirect('/error_ctrl/')
     print('没有发现post')

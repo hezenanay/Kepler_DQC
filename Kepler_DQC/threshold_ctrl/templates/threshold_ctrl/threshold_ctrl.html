@@ -22,7 +22,6 @@
                                             <th class="border-top-0">监控上限</th>
                                             <th class="border-top-0">监控下限</th>
                                             <th class="border-top-0">执行时间</th>
-                                            <th class="border-top-0">创建人</th>
                                             <th class="border-top-0">推送人</th>
                                             <th class="border-top-0">操作</th>
                                         </tr>
@@ -39,17 +38,15 @@
                                                 </div>
                                             </td>
                                             <td>{{task.c_type}}</td>
-                                            <td>{{task.server.add}}</td>
+                                            <td>{{task.server_add}}</td>
                                             <td>{{task.t_name}}</td>
                                             <td>{{task.c_name}}</td>
                                             <td>{{task.up_value}}</td>
                                             <td>{{task.down_value}}</td>
                                             <td>{{task.r_time}}</td>
-                                            <td>{{task.o_user_email}}</td>
                                             <td>{{task.p_user_email}}</td>
                                             <td>
-                                                <button name="new_ctrl" type="submit" style="width: 50px">修改</button>
-                                                <button formaction="/error_ctrl/" formmethod="post" type="submit" style="width: 50px">删除</button>
+                                                <a href="/threshold_ctrl_dtl/{{task.id}}">修改</a>
                                             </td>
                                         </tr>
                                         {% endfor %}
