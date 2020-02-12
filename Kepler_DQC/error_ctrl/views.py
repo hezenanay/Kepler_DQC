@@ -108,8 +108,10 @@ def error_ctrl_dtl(request, post_id):
         # 修改按钮
         # 如果请求来自修改按钮
         elif 'update' in request.POST:
-            # 更新内容占位
-            # Error_task.objects.filter(id=post_id).update(#更新内容占位)
+            new_c_type=request.POST.get('new_c_type')
+            task=task_detail[0]
+            task.c_type=new_c_type
+            task.save()
             return redirect('/error_ctrl/')
     print('没有发现post')
     return render(request, 'error_ctrl/error_ctrl_dtl.html', context=context)

@@ -13,40 +13,172 @@
 						{% endif %}
 						{% csrf_token %}
 						<div class="lowin-group">
-							{{ task.c_type.label_tag }}
-							{{ task.c_type }}
+							<p>监控类型：</p>
+							{% if task.c_type == 'delay' %}
+							<select name="new_c_type">
+								    <option>equal_zero</option>
+								    <option>equal_null</option>
+								    <option>equal_neg</option>
+								    <option selected="selected">delay</option>
+							</select>
+							{% elif task.c_type == 'equal_zero' %}
+							<select name="new_c_type">
+								    <option selected="selected">equal_zero</option>
+								    <option>equal_null</option>
+								    <option>equal_neg</option>
+								    <option>delay</option>
+							</select>
+							{% elif task.c_type == 'equal_null' %}
+							<select name="new_c_type">
+								    <option>equal_zero</option>
+								    <option selected="selected">equal_null</option>
+								    <option>equal_neg</option>
+								    <option>delay</option>
+							</select>
+							{% elif task.c_type == 'equal_neg' %}
+							<select name="new_c_type">
+								    <option>equal_zero</option>
+								    <option>equal_null</option>
+								    <option selected="selected">equal_neg</option>
+								    <option>delay</option>
+							</select>
+							{% endif %}
 						</div>
 						<div class="lowin-group password-group">
-							{{ error_form.s_id.label_tag }}
-							{{ error_form.s_id }}
+							<p>调度id：</p>
+							<input name="new_s_id" type="text" value="{{task.s_id}}">
 						</div>
                         <div class="lowin-group password-group">
-							{{ error_form.server_add.label_tag }}
-							{{ error_form.server_add }}
+							<p>数据服务器：</p>
+							{% if task.server_add == '10.130.146.11' %}
+							<select name="new_server_add">
+								    <option selected="selected">10.130.146.11</option>
+								    <option>10.130.146.13</option>
+								    <option>10.126.75.56</option>
+							</select>
+							{% elif task.server_add == '10.130.146.13' %}
+							<select name="new_server_add">
+								    <option>10.130.146.11</option>
+								    <option selected="selected">10.130.146.13</option>
+								    <option>10.126.75.56</option>
+							</select>
+							{% elif task.server_add == '10.126.75.56' %}
+							<select name="new_server_add">
+								    <option>10.130.146.11</option>
+								    <option>10.130.146.13</option>
+								    <option selected="selected">10.126.75.56</option>
+							</select>
+							{% else %}
+							<select name="new_server_add">
+								    <option>10.130.146.11</option>
+								    <option>10.130.146.13</option>
+								    <option>10.126.75.56</option>
+							</select>
+							{% endif %}
 						</div>
                         <div class="lowin-group password-group">
-							{{ error_form.t_name.label_tag }}
-							{{ error_form.t_name }}
+							<p>监控表名称：</p>
+							<input name="new_t_name" type="text" value="{{task.t_name}}">
 						</div>
                         <div class="lowin-group password-group">
-							{{ error_form.c_name.label_tag }}
-							{{ error_form.c_name }}
+							<p>监控字段名称：</p>
+							<input name="new_c_name" type="text" value="{{task.c_name}}">
 						</div>
                         <div class="lowin-group password-group">
-							{{ error_form.condition.label_tag }}
-							{{ error_form.condition }}
+							<p>监控条件：</p>
+							<input name="new_condition" type="text" value="{{task.condition}}">
 						</div>
                         <div class="lowin-group password-group">
-							{{ error_form.time_option.label_tag }}
-							{{ error_form.time_option }}
+							<p>条件时间选择：</p>
+							{% if task.time_option == 'today' %}
+							<select name="new_time_option">
+								    <option selected="selected">today</option>
+								    <option>yesterday</option>
+								    <option>now_year</option>
+								    <option>now_month</option>
+								    <option>now_month_only</option>
+								    <option>last_month</option>
+								    <option>last_month_only</option>
+							</select>
+							{% elif task.time_option == 'yesterday' %}
+							<select name="new_time_option">
+								    <option>today</option>
+								    <option selected="selected">yesterday</option>
+								    <option>now_year</option>
+								    <option>now_month</option>
+								    <option>now_month_only</option>
+								    <option>last_month</option>
+								    <option>last_month_only</option>
+							</select>
+							{% elif task.time_option == 'now_year' %}
+							<select name="new_time_option">
+								    <option>today</option>
+								    <option>yesterday</option>
+								    <option selected="selected">now_year</option>
+								    <option>now_month</option>
+								    <option>now_month_only</option>
+								    <option>last_month</option>
+								    <option>last_month_only</option>
+							</select>
+							{% elif task.time_option == 'now_month' %}
+							<select name="new_time_option">
+								    <option>today</option>
+								    <option>yesterday</option>
+								    <option>now_year</option>
+								    <option selected="selected">now_month</option>
+								    <option>now_month_only</option>
+								    <option>last_month</option>
+								    <option>last_month_only</option>
+							</select>
+							{% elif task.time_option == 'now_month_only' %}
+							<select name="new_time_option">
+								    <option>today</option>
+								    <option>yesterday</option>
+								    <option>now_year</option>
+								    <option>now_month</option>
+								    <option selected="selected">now_month_only</option>
+								    <option>last_month</option>
+								    <option>last_month_only</option>
+							</select>
+							{% elif task.time_option == 'last_month' %}
+							<select name="new_time_option">
+								    <option>today</option>
+								    <option>yesterday</option>
+								    <option>now_year</option>
+								    <option>now_month</option>
+								    <option>now_month_only</option>
+								    <option selected="selected">last_month</option>
+								    <option>last_month_only</option>
+							</select>
+							{% elif task.time_option == 'last_month_only' %}
+							<select name="new_time_option">
+								    <option>today</option>
+								    <option>yesterday</option>
+								    <option>now_year</option>
+								    <option>now_month</option>
+								    <option>now_month_only</option>
+								    <option>last_month</option>
+								    <option selected="selected">last_month_only</option>
+							</select>
+							{% else %}
+							<select name="new_time_option">
+								    <option>today</option>
+								    <option>yesterday</option>
+								    <option>now_year</option>
+								    <option>now_month</option>
+								    <option>now_month_only</option>
+								    <option>last_month</option>
+								    <option>last_month_only</option>
+							</select>
+							{% endif %}
 						</div>
                         <div class="lowin-group password-group">
-							{{ error_form.r_time.label_tag }}
-							{{ error_form.r_time }}
+							<p>执行时间：</p>
+							<input name="new_r_time" type="time" value="{{task.r_time}}">
 						</div>
                         <div class="lowin-group password-group">
-							{{ error_form.p_user_email.label_tag }}
-							{{ error_form.p_user_email }}
+							<p>推送人邮箱：</p>
+							<input name="new_p_user_email" type="text" value="{{task.p_user_email}}">
 						</div>
 						<button name="update" type="submit">提交</button>
 			            <button name="delete" type="submit">删除</button>

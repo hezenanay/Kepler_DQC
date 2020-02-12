@@ -49,7 +49,7 @@ def new_threshold_ctrl(request):
             up_value = cleaned_data['up_value']
             down_value = cleaned_data['down_value']
             r_time = cleaned_data['r_time']
-            o_user_email = cleaned_data['o_user_email']
+            o_user_email = request.session.get('user_email')
             p_user_email = cleaned_data['p_user_email']
             if c_type == None or r_time == None or server_add == None or t_name == None or c_name == None or up_value == None or down_value == None or o_user_email == None or p_user_email == None:
                 message = '请检查必填项是否完整！'
