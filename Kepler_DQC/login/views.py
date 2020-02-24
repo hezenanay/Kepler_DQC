@@ -7,9 +7,9 @@ from .models import *
 # Create your views here.
 
 def login(request):
-    # if request.session.get('is_login', None):
-    #     #发现已登录则强制跳转到主页面
-    #     return redirect('/index/')
+    if request.session.get('is_login', None):
+        #发现已登录则强制跳转到主页面
+        return redirect('/index/')
     if request.method == 'POST':
         login_form = UserFrom(request.POST)
         print(login_form)

@@ -13,7 +13,7 @@
 						{% endif %}
 						{% csrf_token %}
 						<div class="lowin-group">
-							<p>监控类型：</p>
+							<p>监控类型：
 							{% if task.c_type == 'value' %}
 							<select name="new_c_type">
 								    <option value="value" selected="selected">上下限值</option>
@@ -25,9 +25,10 @@
 								    <option value="percent" selected="selected">上下限百分比</option>
 							</select>
 							{% endif %}
+							</p>
 						</div>
 			            <div class="lowin-group password-group">
-							<p>数据服务器：</p>
+							<p>数据服务器：
 							{% if task.server_add == '10.130.146.11' %}
 							<select name="new_server_add">
 								    <option value="10.130.146.11" selected="selected">报表平台（10.130.146.11）</option>
@@ -53,23 +54,28 @@
 								    <option value="10.126.75.56">虚拟机（10.126.75.56）</option>
 							</select>
 							{% endif %}
+							</p>
 						</div>
 			            <div class="lowin-group password-group">
-							<p>监控表名称：</p>
+							<p>监控表名称：
 							<input name="new_t_name" type="text" value="{{task.t_name}}">
+							</p>
 						</div>
                         <div class="lowin-group password-group">
-							<p>监控字段名称：</p>
+							<p>监控字段名称：
 							<input name="new_c_name" type="text" value="{{task.c_name}}">
+							</p>
 						</div>
                         <div class="lowin-group password-group">
-							<p>监控条件：</p>
+							<p>监控条件：
 							<input name="new_condition" type="text" value="{{task.condition}}">
+							</p>
 						</div>
 			            <div class="lowin-group password-group">
-							<p>监控条件时间选择：</p>
+							<p>监控条件时间选择：
 							{% if task.time_option == 'today' %}
 							<select name="new_time_option">
+								    <option value="">------</option>
 								    <option value="today" selected="selected">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -80,6 +86,7 @@
 							</select>
 							{% elif task.time_option == 'yesterday' %}
 							<select name="new_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday" selected="selected">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -90,6 +97,7 @@
 							</select>
 							{% elif task.time_option == 'now_year' %}
 							<select name="new_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year" selected="selected">当年（yyyy）</option>
@@ -100,6 +108,7 @@
 							</select>
 							{% elif task.time_option == 'now_month' %}
 							<select name="new_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -110,6 +119,7 @@
 							</select>
 							{% elif task.time_option == 'now_month_only' %}
 							<select name="new_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -120,6 +130,7 @@
 							</select>
 							{% elif task.time_option == 'last_month' %}
 							<select name="new_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -130,6 +141,7 @@
 							</select>
 							{% elif task.time_option == 'last_month_only' %}
 							<select name="new_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -140,6 +152,7 @@
 							</select>
 							{% else %}
 							<select name="new_time_option">
+								    <option value="" selected="selected">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -149,11 +162,13 @@
 								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% endif %}
+							</p>
 						</div>
 			            <div class="lowin-group password-group">
-							<p>对比条件时间选择：</p>
+							<p>对比条件时间选择：
 							{% if task.cpr_time_option == 'today' %}
 							<select name="new_cpr_time_option">
+								    <option value="">------</option>
 								    <option value="today" selected="selected">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -164,6 +179,7 @@
 							</select>
 							{% elif task.cpr_time_option == 'yesterday' %}
 							<select name="new_cpr_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday" selected="selected">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -174,6 +190,7 @@
 							</select>
 							{% elif task.cpr_time_option == 'now_year' %}
 							<select name="new_cpr_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year" selected="selected">当年（yyyy）</option>
@@ -184,6 +201,7 @@
 							</select>
 							{% elif task.cpr_time_option == 'now_month' %}
 							<select name="new_cpr_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -194,6 +212,7 @@
 							</select>
 							{% elif task.cpr_time_option == 'now_month_only' %}
 							<select name="new_cpr_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -204,6 +223,7 @@
 							</select>
 							{% elif task.cpr_time_option == 'last_month' %}
 							<select name="new_cpr_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -214,6 +234,7 @@
 							</select>
 							{% elif task.cpr_time_option == 'last_month_only' %}
 							<select name="new_cpr_time_option">
+								    <option value="">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -224,6 +245,7 @@
 							</select>
 							{% else %}
 							<select name="new_cpr_time_option">
+								    <option value="" selected="selected">------</option>
 								    <option value="today">今天（yyyy-mm-dd）</option>
 								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
 								    <option value="now_year">当年（yyyy）</option>
@@ -233,22 +255,27 @@
 								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% endif %}
+							</p>
 						</div>
 			            <div class="lowin-group password-group">
-							<p>监控上限：</p>
+							<p>监控上限：
 							<input name="new_up_value" type="text" value="{{task.up_value}}">
+							</p>
 						</div>
                         <div class="lowin-group password-group">
-							<p>监控下限：</p>
+							<p>监控下限：
 							<input name="new_down_value" type="text" value="{{task.down_value}}">
+							</p>
 						</div>
 			            <div class="lowin-group password-group">
-							<p>执行时间：</p>
+							<p>执行时间：
 							<input name="new_r_time" type="time" value="{{task.r_time}}">
+							</p>
 						</div>
                         <div class="lowin-group password-group">
-							<p>推送人邮箱：</p>
+							<p>推送人邮箱：
 							<input name="new_p_user_email" type="text" value="{{task.p_user_email}}">
+							</p>
 						</div>
 
 						<button name="update" type="submit">提交</button>

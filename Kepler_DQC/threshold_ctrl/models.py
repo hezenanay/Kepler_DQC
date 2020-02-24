@@ -10,6 +10,7 @@ class Threshold_task(models.Model):
     )
 
     time_option_kv=(
+        (None,'------'),
         ('today','今天(yyyy-mm-dd)'),
         ('yesterday','昨天(yyyy-mm-dd)'),
         ('now_year','当年(yyyy)'),
@@ -30,8 +31,8 @@ class Threshold_task(models.Model):
     t_name=models.CharField(verbose_name='监控表名称', max_length=128)
     c_name=models.CharField(verbose_name='监控字段名称', max_length=128)
     condition = models.CharField(verbose_name='监控条件', max_length=256, null=True, blank=True)
-    time_option = models.CharField(verbose_name='监控条件时间选择', max_length=128, null=True, blank=True, choices=time_option_kv)
-    cpr_time_option = models.CharField(verbose_name='对比条件时间选择', max_length=128, null=True, blank=True, choices=time_option_kv)
+    time_option = models.CharField(verbose_name='监控条件时间选择', max_length=128, null=True, blank=True, choices=time_option_kv, default=None)
+    cpr_time_option = models.CharField(verbose_name='对比条件时间选择', max_length=128, null=True, blank=True, choices=time_option_kv, default=None)
     up_value=models.FloatField(verbose_name='监控上限值、百分比', max_length=128)
     down_value=models.FloatField(verbose_name='监控下限值、百分比', max_length=128)
     r_time=models.TimeField(verbose_name='执行时间')
