@@ -16,13 +16,13 @@
 							<p>监控类型：</p>
 							{% if task.c_type == 'value' %}
 							<select name="new_c_type">
-								    <option selected="selected">value</option>
-								    <option>percent</option>
+								    <option value="value" selected="selected">上下限值</option>
+								    <option value="percent">上下限百分比</option>
 							</select>
 							{% elif task.c_type == 'percent' %}
 							<select name="new_c_type">
-								    <option>value</option>
-								    <option selected="selected">percent</option>
+								    <option value="value">上下限值</option>
+								    <option value="percent" selected="selected">上下限百分比</option>
 							</select>
 							{% endif %}
 						</div>
@@ -30,27 +30,27 @@
 							<p>数据服务器：</p>
 							{% if task.server_add == '10.130.146.11' %}
 							<select name="new_server_add">
-								    <option selected="selected">10.130.146.11</option>
-								    <option>10.130.146.13</option>
-								    <option>10.126.75.56</option>
+								    <option value="10.130.146.11" selected="selected">报表平台（10.130.146.11）</option>
+								    <option value="10.130.146.13">决策系统（10.130.146.13）</option>
+								    <option value="10.126.75.56">虚拟机（10.126.75.56）</option>
 							</select>
 							{% elif task.server_add == '10.130.146.13' %}
 							<select name="new_server_add">
-								    <option>10.130.146.11</option>
-								    <option selected="selected">10.130.146.13</option>
-								    <option>10.126.75.56</option>
+								    <option value="10.130.146.11">报表平台（10.130.146.11）</option>
+								    <option value="10.130.146.13" selected="selected">决策系统（10.130.146.13）</option>
+								    <option value="10.126.75.56">虚拟机（10.126.75.56）</option>
 							</select>
 							{% elif task.server_add == '10.126.75.56' %}
 							<select name="new_server_add">
-								    <option>10.130.146.11</option>
-								    <option>10.130.146.13</option>
-								    <option selected="selected">10.126.75.56</option>
+								    <option value="10.130.146.11">报表平台（10.130.146.11）</option>
+								    <option value="10.130.146.13">决策系统（10.130.146.13）</option>
+								    <option value="10.126.75.56" selected="selected">虚拟机（10.126.75.56）</option>
 							</select>
 							{% else %}
 							<select name="new_server_add">
-								    <option>10.130.146.11</option>
-								    <option>10.130.146.13</option>
-								    <option>10.126.75.56</option>
+								    <option value="10.130.146.11">报表平台（10.130.146.11）</option>
+								    <option value="10.130.146.13">决策系统（10.130.146.13）</option>
+								    <option value="10.126.75.56">虚拟机（10.126.75.56）</option>
 							</select>
 							{% endif %}
 						</div>
@@ -70,83 +70,83 @@
 							<p>监控条件时间选择：</p>
 							{% if task.time_option == 'today' %}
 							<select name="new_time_option">
-								    <option selected="selected">today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today" selected="selected">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.time_option == 'yesterday' %}
 							<select name="new_time_option">
-								    <option>today</option>
-								    <option selected="selected">yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday" selected="selected">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.time_option == 'now_year' %}
 							<select name="new_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option selected="selected">now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year" selected="selected">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.time_option == 'now_month' %}
 							<select name="new_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option selected="selected">now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month" selected="selected">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.time_option == 'now_month_only' %}
 							<select name="new_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option selected="selected">now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only" selected="selected">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.time_option == 'last_month' %}
 							<select name="new_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option selected="selected">last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month" selected="selected">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.time_option == 'last_month_only' %}
 							<select name="new_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option selected="selected">last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only" selected="selected">上月（mm）</option>
 							</select>
 							{% else %}
 							<select name="new_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% endif %}
 						</div>
@@ -154,83 +154,83 @@
 							<p>对比条件时间选择：</p>
 							{% if task.cpr_time_option == 'today' %}
 							<select name="new_cpr_time_option">
-								    <option selected="selected">today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today" selected="selected">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.cpr_time_option == 'yesterday' %}
 							<select name="new_cpr_time_option">
-								    <option>today</option>
-								    <option selected="selected">yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday" selected="selected">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.cpr_time_option == 'now_year' %}
 							<select name="new_cpr_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option selected="selected">now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year" selected="selected">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.cpr_time_option == 'now_month' %}
 							<select name="new_cpr_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option selected="selected">now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month" selected="selected">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.cpr_time_option == 'now_month_only' %}
 							<select name="new_cpr_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option selected="selected">now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only" selected="selected">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.cpr_time_option == 'last_month' %}
 							<select name="new_cpr_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option selected="selected">last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month" selected="selected">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% elif task.cpr_time_option == 'last_month_only' %}
 							<select name="new_cpr_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option selected="selected">last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only" selected="selected">上月（mm）</option>
 							</select>
 							{% else %}
 							<select name="new_cpr_time_option">
-								    <option>today</option>
-								    <option>yesterday</option>
-								    <option>now_year</option>
-								    <option>now_month</option>
-								    <option>now_month_only</option>
-								    <option>last_month</option>
-								    <option>last_month_only</option>
+								    <option value="today">今天（yyyy-mm-dd）</option>
+								    <option value="yesterday">昨天（yyyy-mm-dd）</option>
+								    <option value="now_year">当年（yyyy）</option>
+								    <option value="now_month">当月（yyyy-mm）</option>
+								    <option value="now_month_only">当月（mm）</option>
+								    <option value="last_month">上月（yyyy-mm）</option>
+								    <option value="last_month_only">上月（mm）</option>
 							</select>
 							{% endif %}
 						</div>
