@@ -30,5 +30,7 @@ urlpatterns = [
     url(r'^new_threshold_ctrl/', thresholdView.new_threshold_ctrl),
     url(r'^threshold_ctrl_dtl/(?P<post_id>\d+)/$', thresholdView.threshold_ctrl_dtl),
     url(r'^error_ctrl_dtl/(?P<post_id>\d+)/$', errorView.error_ctrl_dtl),
+    url(r'^$', loginView.login),
+    url(r'^logout/', loginView.logout),
 
 ]

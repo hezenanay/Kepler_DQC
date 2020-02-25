@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Lowin</title>
+	<title>Kepler_DQC</title>
 {#	<link rel="stylesheet" href="auth.css">#}
     <link href="{% static 'css/auth.css' %}" rel="stylesheet"/>
 </head>
@@ -12,14 +12,15 @@
 <body>
 	<div class="lowin">
 		<div class="lowin-brand">
-			<img src="kodinger.jpg" alt="logo">
+<!--			<img src="kodinger.jpg" alt="logo">-->
+			<img src="{% static 'pic/login.jpg' %}" alt="logo">
 		</div>
 
 		<div class="lowin-wrapper">
 			<div class="lowin-box lowin-login">
 				<div class="lowin-box-inner">
 					<form class="form-login" action="/login/" method="post">
-						<p>登录</p>
+						<p style="font-size: large">欢迎登陆Kepler_DQC系统</p>
 						{% if message %}
 						    <div class="alert alert-warning">{{ message }}</div>
 						{% endif %}

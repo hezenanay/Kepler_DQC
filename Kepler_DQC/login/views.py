@@ -33,3 +33,17 @@ def login(request):
     print('提交数据无效')
     login_form = UserFrom()
     return render(request, 'login/login.html', locals())
+
+def logout(request):
+    print('调用登出')
+    if not request.session.get('is_login', None):
+        # 如果本来就未登录，也就没有登出一说
+        print('本来就未登录')
+        return redirect("/login/")
+    request.session.flush()
+    print('session已清空')
+    # flush会一次性清空session中所有内容，可以使用下面的方法
+    # del request.session['is_login']
+    # del request.session['user_id']
+    # del request.session['user_name']
+    return redirect("/login/")

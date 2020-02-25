@@ -9,9 +9,9 @@ from .models import *
 
 # 异常监控页面
 def error_ctrl(request):
-    # if not request.session.get('is_login', None):
-    #     # 发现没有登录则强制跳转到登录页面
-    #     return redirect('/login/')
+    if not request.session.get('is_login', None):
+        # 发现没有登录则强制跳转到登录页面
+        return redirect('/login/')
     # 获取登录用户邮箱，获取用户任务列表
     user_email = request.session.get('user_email', None)
     task_list = Error_task.objects.filter(o_user_email=user_email)
@@ -34,9 +34,9 @@ def error_ctrl(request):
 
 # 新建异常监控
 def new_error_ctrl(request):
-    # if not request.session.get('is_login', None):
-    #     # 发现没有登录则强制跳转到登录页面
-    #     return redirect('/login/')
+    if not request.session.get('is_login', None):
+        # 发现没有登录则强制跳转到登录页面
+        return redirect('/login/')
     if request.method == 'POST':
         error_form = ErrorctrlForm(request.POST)
         if error_form.is_valid():
