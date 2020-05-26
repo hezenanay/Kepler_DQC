@@ -52,6 +52,9 @@ def new_error_ctrl(request):
             r_time = cleaned_data['r_time']
             o_user_email = request.session.get('user_email')
             p_user_email = cleaned_data['p_user_email']
+            notes = cleaned_data['notes']
+            t_state = cleaned_data['t_state']
+
             if c_type == None or r_time == None or o_user_email == None or p_user_email == None:
                 message = '请检查必填项是否完整！'
                 return render(request, 'error_ctrl/new_error_ctrl.html', locals())
@@ -76,6 +79,8 @@ def new_error_ctrl(request):
             new_task.r_time = r_time
             new_task.o_user_email = o_user_email
             new_task.p_user_email = p_user_email
+            new_task.notes = notes
+            new_task.t_state = t_state
             new_task.save()
             return redirect('/error_ctrl/')  # 自动跳转到异常监控列表页面
     error_form = ErrorctrlForm()
@@ -117,6 +122,8 @@ def error_ctrl_dtl(request, post_id):
             new_time_option=request.POST.get('new_time_option')
             new_r_time=request.POST.get('new_r_time')
             new_p_user_email=request.POST.get('new_p_user_email')
+            new_notes=request.POST.get('new_notes')
+            new_t_state=request.POST.get('new_t_state')
 
             task=task_detail[0]
             task.c_type=new_c_type
@@ -128,6 +135,8 @@ def error_ctrl_dtl(request, post_id):
             task.time_option=new_time_option
             task.r_time=new_r_time
             task.p_user_email=new_p_user_email
+            task.notes=new_notes
+            task.t_state=new_t_state
             task.save()
             return redirect('/error_ctrl/')
     print('没有发现post')

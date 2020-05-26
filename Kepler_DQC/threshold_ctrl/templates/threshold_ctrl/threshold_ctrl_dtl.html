@@ -277,6 +277,26 @@
 							<input name="new_p_user_email" type="text" value="{{task.p_user_email}}">
 							</p>
 						</div>
+			            <div class="lowin-group password-group">
+							<p>备注：
+							<input name="new_notes" type="text" value="{{task.notes}}">
+							</p>
+						</div>
+			            <div class="lowin-group password-group">
+							<p>任务状态：
+							{% if task.t_state == '1' %}
+							<select name="new_t_state">
+								    <option value="1" selected="selected">上线</option>
+								    <option value="0">下线</option>
+							</select>
+							{% elif task.t_state == '0' %}
+							<select name="new_server_add">
+								    <option value="1">上线</option>
+								    <option value="0" selected="selected">下线</option>
+							</select>
+							{% endif %}
+							</p>
+						</div>
 
 						<button name="update" type="submit">提交</button>
 			            <button name="delete" type="submit">删除</button>

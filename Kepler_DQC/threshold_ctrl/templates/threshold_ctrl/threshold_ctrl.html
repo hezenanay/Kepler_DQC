@@ -23,6 +23,8 @@
                                             <th class="border-top-0">监控下限</th>
                                             <th class="border-top-0">执行时间</th>
                                             <th class="border-top-0">推送人</th>
+                                            <th class="border-top-0">任务状态</th>
+                                            <th class="border-top-0">监控状态</th>
                                             <th class="border-top-0">操作</th>
                                         </tr>
                                     </thead>
@@ -37,16 +39,30 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>{{task.c_type}}</td>
-                                            <td>{{task.server_add}}</td>
-                                            <td>{{task.t_name}}</td>
-                                            <td>{{task.c_name}}</td>
-                                            <td>{{task.up_value}}</td>
-                                            <td>{{task.down_value}}</td>
-                                            <td>{{task.r_time}}</td>
-                                            <td>{{task.p_user_email}}</td>
+                                            <td><p class="task-list" style="width: 60px">
+                                                {% if task.c_type == 'value' %}
+                                                限值监控
+                                                {% elif task.c_type == 'percent' %}
+                                                百分比监控
+                                                {% endif %}
+                                            </p></td>
+                                            <td><p class="task-list" style="width: 100px">{{task.server_add}}</p></td>
+                                            <td><p class="task-list" style="width: 150px">{{task.t_name}}</p></td>
+                                            <td><p class="task-list" style="width: 150px">{{task.c_name}}</p></td>
+                                            <td><p class="task-list" style="width: 60px">{{task.up_value}}</p></td>
+                                            <td><p class="task-list" style="width: 60px">{{task.down_value}}</p></td>
+                                            <td><p class="task-list" style="width: 60px">{{task.r_time}}</p></td>
+                                            <td><p class="task-list" style="width: 200px">{{task.p_user_email}}</p></td>
+                                            <td><p class="task-list" style="width: 60px">
+                                                {% if task.t_state == '1' %}
+                                                上线
+                                                {% elif task.t_state == '0' %}
+                                                下线
+                                                {% endif %}
+                                            </p></td>
+                                            <td><p class="task-list" style="width: 60px">{{task.c_state}}</p></td>
                                             <td>
-                                                <a href="/threshold_ctrl_dtl/{{task.id}}">修改</a>
+                                                <a href="/threshold_ctrl_dtl/{{task.id}}" style="display: block; width: 40px;">修改</a>
                                             </td>
                                         </tr>
                                         {% endfor %}

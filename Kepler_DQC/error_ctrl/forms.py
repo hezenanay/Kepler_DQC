@@ -24,3 +24,5 @@ class ErrorctrlForm(forms.Form):
     time_option=forms.ChoiceField(label='条件时间选择', required=False, choices=Error_task.time_option_kv)
     r_time=forms.TimeField(label='执行时间')
     p_user_email=forms.EmailField(label='推送人邮箱', max_length=128)
+    notes=forms.CharField(label='备注', required=False, max_length=128)
+    t_state=forms.ChoiceField(label='任务状态', required=False, choices=Error_task.t_state_kv)

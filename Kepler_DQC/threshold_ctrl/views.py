@@ -51,6 +51,8 @@ def new_threshold_ctrl(request):
             r_time = cleaned_data['r_time']
             o_user_email = request.session.get('user_email')
             p_user_email = cleaned_data['p_user_email']
+            notes = cleaned_data['notes']
+            t_state = cleaned_data['t_state']
             if c_type == None or r_time == None or server_add == None or t_name == None or c_name == None or up_value == None or down_value == None or o_user_email == None or p_user_email == None:
                 message = '请检查必填项是否完整！'
                 return render(request, 'threshold_ctrl/new_threshold_ctrl.html', locals())
@@ -73,6 +75,8 @@ def new_threshold_ctrl(request):
             new_task.r_time = r_time
             new_task.o_user_email = o_user_email
             new_task.p_user_email = p_user_email
+            new_task.notes = notes
+            new_task.t_state = t_state
             new_task.save()
             return redirect('/threshold_ctrl/')
     threshold_form = ThresholdtaskForm()
@@ -99,7 +103,7 @@ def threshold_ctrl_dtl(request, post_id):
         # 如果请求来自删除按钮
         if 'delete' in request.POST:
             print('已点击删除')
-            Error_task.objects.filter(id=post_id).delete()
+            Threshold_task.objects.filter(id=post_id).delete()
             return redirect('/threshold_ctrl/')
 
         # 修改按钮
@@ -116,6 +120,8 @@ def threshold_ctrl_dtl(request, post_id):
             new_down_value=request.POST.get('new_down_value')
             new_r_time=request.POST.get('new_r_time')
             new_p_user_email=request.POST.get('new_p_user_email')
+            new_notes=request.POST.get('new_notes')
+            new_t_state=request.POST.get('new_t_state')
 
             task = task_detail[0]
             task.c_type = new_c_type
@@ -129,6 +135,8 @@ def threshold_ctrl_dtl(request, post_id):
             task.down_value=new_down_value
             task.r_time=new_r_time
             task.p_user_email=new_p_user_email
+            task.notes=new_notes
+            task.t_state=new_t_state
             task.save()
             return redirect('/threshold_ctrl/')
     print('没有发现post')

@@ -22,3 +22,5 @@ class ThresholdtaskForm(forms.Form):
     down_value=forms.FloatField(label='监控下限')
     r_time = forms.TimeField(label='执行时间')
     p_user_email = forms.EmailField(label='推送人邮箱', max_length=128)
+    notes = forms.CharField(label='备注', required=False, max_length=128)
+    t_state = forms.ChoiceField(label='任务状态', required=False, choices=Threshold_task.t_state_kv)

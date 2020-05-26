@@ -1,0 +1,6 @@
+.task-list {
+	/*width: 200px;*/
+	overflow: hidden; /* 超出的部分隐藏起来 */
+    text-overflow: ellipsis;
+	white-space: nowrap;/* 不显示的地方用省略号...代替 */
+}
