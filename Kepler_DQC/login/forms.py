@@ -15,6 +15,6 @@ from .models import User
 
 
 class UserFrom(forms.Form):
-    username=forms.CharField(label='用户名', max_length=128, widget=forms.TextInput)
-    password=forms.CharField(label='密码', max_length=255, widget=forms.PasswordInput)
+    username=forms.CharField(label='用户名', max_length=128, widget=forms.TextInput(attrs={'class':'login_box'}))
+    password=forms.CharField(label='密码', max_length=255, widget=forms.PasswordInput(attrs={'class':'login_box'}))
 

@@ -4,3 +4,14 @@
     text-overflow: ellipsis;
 	white-space: nowrap;/* 不显示的地方用省略号...代替 */
 }
+
+.login_box{
+	height: 38px;
+	width: 268px;
+	box-sizing: border-box;
+	padding: 10px;
+	padding-right: 0px;
+	margin-bottom: 17px;
+	border-radius: 3px;
+	border: solid rgb(214,214,21)  1px;
+}
